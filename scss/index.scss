@@ -1,0 +1,31 @@
+@import "./common/reset";
+@import "./common/variables";
+@import "./common/extends";
+
+body{
+  margin: 0;
+
+  div.wrapper {
+    @extend %extend-example;
+
+    .green {
+      @extend %extend-example;
+
+      color: green;
+    }
+
+    .container{
+      @extend %extend-example;
+
+      color: red;
+    }
+  }
+
+  *{
+    box-sizing: border-box;
+  }
+
+  a{
+    display: inline-block;
+  }
+}
