@@ -1,21 +1,26 @@
 @import "./common/reset";
 @import "./common/variables";
 @import "./common/extends";
+@import "./common/mixins";
 
 body{
+  @include my-mixin(pink, 1000px);
   margin: 0;
 
   div.wrapper {
-    @extend %extend-example;
+    @include my-mixin(black, 500px);
+    //@extend %extend-example;
 
     .green {
-      @extend %extend-example;
+      @include my-mixin(black, 500px);
+      //@extend %extend-example;
 
       color: green;
     }
 
     .container{
-      @extend %extend-example;
+      @include my-mixin(black, 500px);
+      //@extend %extend-example;
 
       color: red;
     }
