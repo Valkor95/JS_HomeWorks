@@ -1,7 +1,6 @@
-@import "./common/reset";
-@import "./common/variables";
-@import "./common/extends";
-@import "./common/mixins";
+@import "./common";
+@import "./components/header";
+
 
 body{
   @include my-mixin(pink, 1000px);
