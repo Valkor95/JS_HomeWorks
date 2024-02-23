@@ -1,35 +1,5 @@
 @import "./common";
 @import "./components/header";
+@import "./components/banner/index";
 
 
-body{
-  @include my-mixin(pink, 1000px);
-  margin: 0;
-
-  div.wrapper {
-    @include my-mixin(black, 500px);
-    //@extend %extend-example;
-
-    .green {
-      @include my-mixin(black, 500px);
-      //@extend %extend-example;
-
-      color: green;
-    }
-
-    .container{
-      @include my-mixin(black, 500px);
-      //@extend %extend-example;
-
-      color: red;
-    }
-  }
-
-  *{
-    box-sizing: border-box;
-  }
-
-  a{
-    display: inline-block;
-  }
-}
