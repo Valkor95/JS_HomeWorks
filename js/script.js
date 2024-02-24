@@ -1,11 +1,18 @@
 'use strict';
 
-let cars = ["Honda", "Toyota",  "Seat", "Opel", "VW", "BMW", "Audi"]
-let array = [1, 4, 5, 5, 7, 9, 1, 1, 2, 2, 7, 7, 9];
-let array2 = [1, 9, 3, 6, 5, 4, 2];
+// let cars = ["Honda", "Toyota",  "Seat", "Opel", "VW", "BMW", "Audi"]
+// let array = [1, 4, 5, 5, 7, 9, 1, 1, 2, 2, 7, 7, 9];
+// let array2 = [1, 9, 3, 6, 5, 4, 2];
+//
+// let newNums = [...new Set(array)].filter(item => array2.includes(item))
 
-let newNums = [...new Set(array)].filter(item => array2.includes(item))
-console.log(newNums)
+let array = [2, 4, 2, 6, 3, 6, 88, 1, 34, 878, 3, 5, 87, 88];
+let array2 = [2, 5, 87, 32, 1, 5, 7, 88, 88]
+
+let newSpecialNum = [... new Set(array)].filter(element => array2.includes(element));
+
+
+console.log(newSpecialNum)
 
 let randNum = array[(Math.floor(Math.random()*(array.length)))];
 console.log(randNum)
