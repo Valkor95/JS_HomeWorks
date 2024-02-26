@@ -3,7 +3,7 @@
 //task #1
 
 
-let name = 'John';
+const name = 'John';
 const admin = name;
 
 alert (admin)
@@ -26,9 +26,9 @@ const user = 'Petr Veselko';
 
 //task #3
 
-let string = '10';
-let number = 10;
-let result = string + number;
+const string = '10';
+const number = 10;
+const result = string + number;
 
 alert(result)
 /* Арифметические операции происходят только между числами.
