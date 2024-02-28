@@ -1,6 +1,6 @@
 'use strict';
 
-let age = prompt('Please, enter your age!');
+const age = prompt('Please, enter your age!');
 
 
 switch (true){
