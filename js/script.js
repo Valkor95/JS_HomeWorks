@@ -4,13 +4,13 @@ let numOrStr = prompt('input number or string');
 console.log(numOrStr)
 
 switch (numOrStr){
-    case numOrStr === null:
+    case null:
         console.log('ви скасували');
         break;
-    case numOrStr.trim() === '':
+    case '':
         console.log('Empty String');
         break;
-    case isNaN(+numOrStr):
+    case !isNaN(+numOrStr):
         console.log(' number is Ba_NaN');
         break;
     default:
