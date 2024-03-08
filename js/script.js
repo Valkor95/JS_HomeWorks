@@ -5,13 +5,12 @@ let age = prompt('Введіть ваш рік народження!');
     age = "Шкода, що Ви не захотіли ввести cвою дату народження!";
 }
 
-let city = prompt('В якому місті ви живете?');
+const city = prompt('В якому місті ви живете?');
 // if (city === null) {
 //     city = "Шкода, що Ви не захотіли ввести cвоє місто";
 // };
 
 let sport = prompt('Який ваш улюблений вид спорту: джиу-джитсу, бокс чи футбол?');
-
 
 
 let capitalOrTown = null;
@@ -23,15 +22,12 @@ let capitalOrTown = null;
     } else { capitalOrTown = `Ти живеш у місті ${city}!`}
 
 
-
-
-
-let sportStars = {
+const sportStars = {
         ['джиу-джитсу']: 'Гаррі Тонон',
         ['бокс']: 'Майк Тайсон',
         ['футбол']: 'Леон Мессі',
-
 }
+
     if (sport === null || sport === ''){
         sport = "Шкода, що Ви не захотіли ввести cвій улюблений вид спорту!";
     } else if ( sport.toLowerCase() === 'джиу-джитсу') {
