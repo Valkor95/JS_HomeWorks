@@ -71,12 +71,12 @@
 // alert(solution);
 
 // Task 11
-// const a = +prompt('Значение #1');
-// const b = +prompt('Значение #2');
-// const solution = a <= 1 || (b >= 6 && b < 14) ? `Верно` : `Неверно`;
-//
-// console.log(solution);
-// alert(solution);
+const a = +prompt('Значение #1');
+const b = +prompt('Значение #2');
+const solution = a <= 1 && (b >= 3 && b < 14) ? `${a + b}` : `${a - b}`;
+
+console.log(solution);
+alert(solution);
 
 // Task 12
 // const a = +prompt('Значение #1');
@@ -87,25 +87,25 @@
 // alert(solution);
 
 // Task 13
-const num = +prompt('Введите одно значение: 1, 2, 3 или 4!');
-let result = null;
-
-switch (num) {
-    case 1:
-        result = 'Зима';
-        break;
-    case 2:
-        result = 'Весна';
-        break;
-    case 3:
-        result = 'Лето';
-        break;
-    case 4:
-        result = 'Осень';
-        break;
-    default:
-        alert('Вы ввели неправильное значение!')
-}
-
-console.log(result);
-alert(result);
+// const num = +prompt('Введите одно значение: 1, 2, 3 или 4!');
+// let result = null;
+//
+// switch (num) {
+//     case 1:
+//         result = 'Зима';
+//         break;
+//     case 2:
+//         result = 'Весна';
+//         break;
+//     case 3:
+//         result = 'Лето';
+//         break;
+//     case 4:
+//         result = 'Осень';
+//         break;
+//     default:
+//         alert('Вы ввели неправильное значение!')
+// }
+//
+// console.log(result);
+// alert(result);
