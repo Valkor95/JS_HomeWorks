@@ -2,7 +2,8 @@
 
 //Task 1
 
-let x = 10, y = 7;
+const x = 10;
+const y = 7;
 const comparison = x > y ? 'х больше, чем y' : 'х не больше, чем у';
 
 console.log(comparison);
