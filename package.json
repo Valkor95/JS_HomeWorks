@@ -1,0 +1,21 @@
+{
+  "name": "pro",
+  "version": "1.0.0",
+  "description": "Для виконання цього ДЗ вам необхідно переглянути урок по npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "hw"
+  },
+  "keywords": [
+    "homework"
+  ],
+  "author": "Valeriy Korovin",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5"
+  }
+}
