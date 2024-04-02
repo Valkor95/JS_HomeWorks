@@ -1,11 +1,9 @@
-"use strict";
+// Task 1 - indexOf;
 
-//Task 1 - indexOf;
+const arr = ['Alex', 'Vlad', 'Helen', 'Yuriy'];
 
-const arr = ["Alex", "Vlad", "Helen", "Yuriy"];
-
-console.log(arr.indexOf("Vlad", 3));
-console.log(arr.indexOf("Vlad", -4));
+console.log(arr.indexOf('Vlad', 3));
+console.log(arr.indexOf('Vlad', -4));
 const indOf = function (arr, item, from = 0) {
   const start = from >= 0 ? from : arr.length + from;
 
@@ -17,23 +15,23 @@ const indOf = function (arr, item, from = 0) {
   return -1;
 };
 
-console.log(indOf(arr, "Vlad", 3));
-console.log(indOf(arr, "Vlad", -3));
+console.log(indOf(arr, 'Vlad', 3));
+console.log(indOf(arr, 'Vlad', -3));
 
 // Task 2 - lastIndexOf;
 
 const arr2 = [
-  "Alex",
-  "Vlad",
-  "Helen",
-  "Yuriy",
-  "Helen",
-  "Yuriy",
-  "Vlad",
-  "Alex",
+  'Alex',
+  'Vlad',
+  'Helen',
+  'Yuriy',
+  'Helen',
+  'Yuriy',
+  'Vlad',
+  'Alex',
 ];
 
-console.log(arr2.lastIndexOf("Vlad"));
+console.log(arr2.lastIndexOf('Vlad'));
 const lastInOf = function (arr, findItem, from = arr.length) {
   const start = from <= 0 ? 0 : from;
 
@@ -45,15 +43,13 @@ const lastInOf = function (arr, findItem, from = arr.length) {
   return -1;
 };
 
-console.log(lastInOf(arr2, "Vlad", 5));
+console.log(lastInOf(arr2, 'Vlad', 5));
 
 // Task 3 - find;
-const arr3 = [2, 3, 4, 6, 9, "Billy", "B", "Bi"];
+const arr3 = [2, 3, 4, 6, 9, 'Billy', 'B', 'Bi'];
 
 console.log(
-  arr3.find(function (item) {
-    return typeof item === "string";
-  }),
+  arr3.find((item) => typeof item === 'string'),
 );
 
 const funcFind = function (arr, callback) {
@@ -66,19 +62,15 @@ const funcFind = function (arr, callback) {
 };
 
 console.log(
-  funcFind(arr3, function (item) {
-    return item === 43;
-  }),
+  funcFind(arr3, (item) => item === 43),
 );
 
 console.log(
-  funcFind(arr3, function (item) {
-    return typeof item === "string";
-  }),
+  funcFind(arr3, (item) => typeof item === 'string'),
 );
 
-//Task 4 - findIndex;
-const arr4 = [4, 4, 6, 7, 8, "Hi", "Win"];
+// Task 4 - findIndex;
+const arr4 = [4, 4, 6, 7, 8, 'Hi', 'Win'];
 
 console.log(arr4.findIndex((value) => value % 2 === 1));
 
@@ -94,7 +86,7 @@ const funcFI = function (arr, callback) {
 console.log(funcFI(arr4, (value) => value === 8));
 console.log(funcFI(arr4, (value) => value === 0));
 
-//Task 5 - includes
+// Task 5 - includes
 const arr5 = [2, 33, 44, 55, 66];
 
 console.log(arr5.includes(33));
@@ -112,8 +104,8 @@ const funcIncludes = function (arr, findItem, from = 0) {
 
 console.log(funcIncludes(arr5, 44, 2));
 
-//Task 6 - every;
-const arr6 = [5, 6, 7, 8, 9, "W"];
+// Task 6 - every;
+const arr6 = [5, 6, 7, 8, 9, 'W'];
 
 console.log(arr6.every((i) => i > 10));
 
@@ -128,8 +120,8 @@ const funcEvery = function (arr, callback) {
 
 console.log(funcEvery(arr6, (item) => typeof item !== null));
 
-//Task 7 - some;
-const arr7 = [5, 7, 7, 10, 9, "W"];
+// Task 7 - some;
+const arr7 = [5, 7, 7, 10, 9, 'W'];
 
 console.log(arr7.some((i) => i % 2 === 0));
 
@@ -142,19 +134,19 @@ const funcSome = function (arr, callback) {
   return false;
 };
 
-console.log(funcSome(arr7, (item) => typeof item === "number"));
+console.log(funcSome(arr7, (item) => typeof item === 'number'));
 
 // Task 8 - reduce;
 const arr8 = [
-  { word: "N" },
-  { word: "i" },
-  { word: "g" },
-  { word: "g" },
-  { word: "A" },
+  { word: 'N' },
+  { word: 'i' },
+  { word: 'g' },
+  { word: 'g' },
+  { word: 'A' },
 ];
 
 console.log(
-  arr8.reduce(function (accum, item) {
+  arr8.reduce((accum, item) => {
     accum += item.word;
     return accum;
   }, []),
@@ -171,7 +163,7 @@ const funcReduce = function (arr, callback, initialValue) {
 console.log(
   funcReduce(
     arr8,
-    function (accum, item) {
+    (accum, item) => {
       accum += item.word;
       return accum;
     },
