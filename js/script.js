@@ -131,3 +131,30 @@ const funcSome = function (arr, callback){
 }
 
 console.log(funcSome(arr7, item => typeof item === 'number'))
+
+// Task 8 - reduce;
+const arr8 = [
+    {"word": "N"},
+    {"word": "i"},
+    {"word": "g"},
+    {"word": "g"},
+    {"word": "A"}
+];
+
+console.log(arr8.reduce(function (accum, item){
+    accum += item.word;
+    return accum;
+}, []))
+
+const funcReduce = function (arr, callback, initialValue){
+    let accum = (initialValue !== undefined) ? initialValue : arr[0];
+    for (let i = 0; i < arr.length; i++){
+        accum = callback(accum, arr[i], i, arr)
+    }
+    return accum
+}
+
+console.log(funcReduce(arr8, function (accum, item){
+    accum += item.word;
+    return accum;
+}, []))
