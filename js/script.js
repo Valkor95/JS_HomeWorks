@@ -1,3 +1,4 @@
+"use strict"
 // Task 1 - indexOf;
 
 const arr = ['Alex', 'Vlad', 'Helen', 'Yuriy'];
