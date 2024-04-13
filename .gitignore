@@ -3,4 +3,5 @@ node_modules
 .vs_code
 .DStore
 package-lock.json
+.eslintrc.json
 eslintrc.js
