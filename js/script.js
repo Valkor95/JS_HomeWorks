@@ -16,6 +16,7 @@
       ul.appendChild(li);
     });
 
+    document.querySelector("body").prepend(ul);
     return ul;
   };
 
