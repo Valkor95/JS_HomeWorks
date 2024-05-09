@@ -10,10 +10,10 @@
         li.textContent = item;
       } else {
         const next = generateList(item);
-        li.appendChild(next);
+        li.append(next);
       }
 
-      ul.appendChild(li);
+      ul.append(li);
     });
 
     document.querySelector("body").prepend(ul);
