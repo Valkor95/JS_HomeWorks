@@ -6,6 +6,7 @@
 
     array.forEach((item) => {
       const li = document.createElement('li');
+
       if (!Array.isArray(item)) {
         li.textContent = item;
       } else {
@@ -16,10 +17,13 @@
       ul.append(li);
     });
 
-    document.querySelector("body").prepend(ul);
     return ul;
   };
 
+  const creatTree = function (container, arr){
+    document.querySelector(container).prepend(generateList(arr));
+  }
+
   const array = [1, 2, [1.1, 1.2, 1.3], 3];
-  console.log(generateList(array));
+  creatTree('body', array)
 }());
