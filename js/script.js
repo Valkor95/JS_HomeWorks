@@ -1,6 +1,6 @@
-// "use strict" //eslint-disable-line
 
     (function (){
+        "use strict" //eslint-disable-line
         const eventFunction = function (){
             const category = document.querySelector('.category-list')
             const product = document.querySelector('.product-list')
@@ -17,9 +17,29 @@
                 {category: 'Fujifilm', name: 'Fujifilm S3200', price: '600$'},
                 {category: 'Fujifilm', name: 'Fujifilm X-M1', price: '1000$'},
                 {category: 'Fujifilm', name: 'Fujifilm X-H2', price: '1500$'},
-
             ]
 
+            const renderCategories = function (){
+                category.innerHTML = '';
+                categories.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    category.append(li);
+                    li.addEventListener('click', () => renderProducts(item));
+                })
+            }
+
+            const renderProducts = function (catalog){
+                product.innerHTML = '';
+                const filter = products.filter(prod => prod.category === catalog)
+                filter.forEach(item =>{
+                    const li = document.createElement('li');
+                    li.textContent = `${item.name}: ${item.price}`;
+                    product.append(li);
+                })
+            }
+
+            renderCategories()
         }
 
         document.addEventListener('DOMContentLoaded', eventFunction)
