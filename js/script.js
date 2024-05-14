@@ -34,11 +34,13 @@
                 filter.forEach(item =>{
                     const li = document.createElement('li');
                     li.textContent = `${item.name}: ${item.price}`;
+                    li.setAttribute('data-name', item.name)
                     product.append(li);
                 })
             }
 
-            const showInfo = function (product){
+            const showInfo = function (productName){
+                const product = products.find(p => p.name === productName)
                 info.innerHTML = `
                 <h3>${product.name}</h3>;
                 <p>Category: ${product.category}</p>;
@@ -68,11 +70,12 @@
 
             const eventProduct = (event) => {
                 if (event.target.tagName === 'LI'){
-                    const prodName = event.target.textContent.split(' - ')[0];
-                    const product = products.find(p => p.name === prodName);
-                    showInfo(product)
+                    const productName =event.target.getAttribute('data-name')
+                    showInfo(productName)
                 }
             }
+
+            product.addEventListener('click', eventProduct)
         }
 
         document.addEventListener('DOMContentLoaded', eventFunction)
