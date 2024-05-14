@@ -42,10 +42,9 @@
             const showInfo = function (productName){
                 const product = products.find(p => p.name === productName)
                 info.innerHTML = `
-                <h3>${product.name}</h3>;
-                <p>Category: ${product.category}</p>;
-                <p>Price: ${product.price}</p>.
-                <hr>
+                <h3>${product.name}</h3>
+                <p>Category: ${product.category}</p>
+                <p>Price: ${product.price}</p>
                 <p>Best choice of your life!</p>
                 <button data-buy-btn>Buy NOW!!!</button>`;
                 document.querySelector('[data-buy-btn]').addEventListener('click', buyProduct);
@@ -54,7 +53,8 @@
             const buyProduct =  () => {
                 alert('Product purchased');
                 renderCategories();
-                product.innerHTML = ''
+                product.innerHTML = '';
+                info.innerHTML = '';
             }
 
             renderCategories()
