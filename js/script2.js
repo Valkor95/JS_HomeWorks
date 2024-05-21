@@ -6,17 +6,17 @@
         if (formDataGet){
             const formDataObj = JSON.parse(formDataGet);
 
-
-
             for(const key in formDataObj){
                 if (formDataObj.hasOwnProperty(key)){
                     const value = formDataObj[key];
 
-                    const li = document.createElement('li');
-                    li.classList.add('list-group-item');
-                    li.textContent = `${key}: ${value}`;
+                    if(value.trim() !== ''){
+                        const li = document.createElement('li');
+                        li.classList.add('list-group-item');
+                        li.textContent = `${key}: ${value}`;
+                        userInfoList.append(li);
 
-                    userInfoList.append(li);
+                    }
                 }
             }
         } else {
