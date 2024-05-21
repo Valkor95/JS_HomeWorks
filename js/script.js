@@ -1,14 +1,26 @@
-"use strict" //eslint-disable-line
 
     (function (){
 
-    const form = document.querySelectorAll('form');
+        const form = document.querySelector('form');
 
-    const eventHandler = (event) => {
 
-    }
+        const eventHandler = function (event){
+            event.preventDefault();
+            event.stopPropagation();
 
-    form.addEventListener('submit', eventHandler)
+
+            const formData = new FormData(this);
+            const formObj = {};
+
+            formData.forEach((value, key) => {
+                formObj[key] = value;
+            })
+
+            console.log(formObj)
+        }
+
+        form.addEventListener('submit', eventHandler)
 
 
     })()
+
