@@ -8,7 +8,15 @@
             const userInfoList = document.querySelector('#userInfo');
 
             for(const key in formDataObj){
-                if ()
+                if (formDataObj.hasOwnProperty(key)){
+                    const value = formDataObj[key];
+
+                    const li = document.createElement('li');
+                    li.classList.add('list-group-item');
+                    li.textContent = `${key}: ${value}`;
+
+                    userInfoList.append(li);
+                }
             }
         }
     }
