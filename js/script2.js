@@ -1,11 +1,12 @@
 (function (){
     const getLS = () =>{
         const formDataGet = localStorage.getItem('formData');
+        const userInfoList = document.querySelector('#userInfo');
 
         if (formDataGet){
             const formDataObj = JSON.parse(formDataGet);
 
-            const userInfoList = document.querySelector('#userInfo');
+
 
             for(const key in formDataObj){
                 if (formDataObj.hasOwnProperty(key)){
@@ -18,6 +19,13 @@
                     userInfoList.append(li);
                 }
             }
+        } else {
+            const li2 = document.createElement('li');
+            li2.classList.add('list-group-item');
+            li2.textContent = 'No data available';
+            userInfoList.append(li2);
         }
     }
+
+    document.addEventListener('DOMContentLoaded', getLS)
 })()
