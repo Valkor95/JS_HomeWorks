@@ -16,7 +16,9 @@
                 formObj[key] = value;
             })
 
-            console.log(formObj)
+            const stringLS = JSON.stringify(formObj)
+
+            localStorage.setItem('formData', stringLS)
         }
 
         form.addEventListener('submit', eventHandler)
