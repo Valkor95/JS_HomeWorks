@@ -17,8 +17,6 @@
             data[input.name] = input.value
         })
 
-
-
         try {
             const savedItem = saveTodoItems(data);
             const todoItemHTML = createTodoIL(savedItem);
@@ -56,6 +54,15 @@
         return wrapper;
     }
 
+    const loadedHandler = () => {
+        const todoItems = getData();
+        todoItems.forEach(item => {
+            const layout = createTodoIL(item);
+            todoItemContainer.prepend(layout)
+        })
+    }
+
+    document.addEventListener('DOMContentLoaded', loadedHandler)
     form.addEventListener('submit', createTodoItem)
 
 })()
