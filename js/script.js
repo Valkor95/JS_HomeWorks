@@ -56,6 +56,8 @@
 
     const loadedHandler = () => {
         const todoItems = getData();
+        if(!todoItems.length) return;
+
         currentId = todoItems[todoItems.length - 1].id + 1;
         todoItems.forEach(item => {
             const layout = createTodoIL(item);
