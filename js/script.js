@@ -4,6 +4,7 @@
 
     const TODO_ITEMS = 'todo-items';
     const form = document.querySelector('#todoForm');
+    const todoItemContainer = document.querySelector('#todoItems')
     let currentId = 1;
 
     const createTodoItem = (event) =>{
@@ -21,6 +22,7 @@
         try {
             const savedItem = saveTodoItems(data);
             const todoItemHTML = createTodoIL(savedItem);
+            todoItemContainer.prepend(todoItemHTML);
         } catch (error){
             alert(error.message)
         } finally {
@@ -42,8 +44,16 @@
         return getData().at(-1)
     }
 
-    const createTodoIL = () => {
+    const createTodoIL = (data) => {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('col-4');
+        wrapper.setAttribute('data-todo-id', data.id)
 
+        wrapper.innerHTML = `<div class="taskWrapper">
+                                <div class="taskHeading">#${data.id} | ${data.title}</div>
+                                <div class="taskDescription">${data.description}</div>
+                             </div>`
+        return wrapper;
     }
 
     form.addEventListener('submit', createTodoItem)
