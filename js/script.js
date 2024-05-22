@@ -67,7 +67,14 @@
         })
     }
 
+    const handlerRemoveTodo = (event) => {
+        event.stopPropagation();
+        if(!event.target.hasAttribute('data-remove-btn')) return;
+
+        console.log(event.target)
+    }
+
     document.addEventListener('DOMContentLoaded', loadedHandler)
     form.addEventListener('submit', createTodoItem)
-
+    todoItemContainer.addEventListener('click', handlerRemoveTodo)
 })()
