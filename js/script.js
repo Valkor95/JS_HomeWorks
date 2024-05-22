@@ -9,15 +9,13 @@
         event.preventDefault();
         event.stopPropagation();
 
-        const data = {
-            title: null,
-            description: null
-        }
+        const data = {}
 
         event.target.querySelectorAll('input, textarea').forEach(input => {
             data[input.name] = input.value
-
         })
+
+        console.log(data)
 
     }
 
