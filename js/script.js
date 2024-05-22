@@ -6,6 +6,7 @@
     const form = document.querySelector('#todoForm');
     const todoItemContainer = document.querySelector('#todoItems')
     let currentId = 1;
+    const removeAll = document.querySelector('[data-remove-all]')
 
     const createTodoItem = (event) =>{
         event.preventDefault();
@@ -83,7 +84,13 @@
         currentWrapper.remove();
     }
 
-    document.addEventListener('DOMContentLoaded', loadedHandler)
-    form.addEventListener('submit', createTodoItem)
-    todoItemContainer.addEventListener('click', handlerRemoveTodo)
+    const handlerRemoveAllTodo = () => {
+        localStorage.removeItem(TODO_ITEMS);
+        todoItemContainer.innerHTML = ''
+    }
+
+    document.addEventListener('DOMContentLoaded', loadedHandler);
+    form.addEventListener('submit', createTodoItem);
+    todoItemContainer.addEventListener('click', handlerRemoveTodo);
+    removeAll.addEventListener('click', handlerRemoveAllTodo)
 })()
