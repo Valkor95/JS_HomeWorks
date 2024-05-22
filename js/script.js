@@ -1,7 +1,34 @@
-"use strict" //eslint-disable-line
+// "use strict" //eslint-disable-line
 
-    (function (){
+(function (){
 
+    const TODO_ITEMS = 'todo-items';
+    const form = document.querySelector('#todoForm');
 
+    const createTodoItem = (event) =>{
+        event.preventDefault();
+        event.stopPropagation();
 
-    })()
+        const data = {
+            title: null,
+            description: null
+        }
+
+        event.target.querySelectorAll('input, textarea').forEach(input => {
+            data[input.name] = input.value
+
+        })
+
+    }
+
+    const saveTodoItems = () => {
+
+    }
+
+    const createTodoIL = () => {
+
+    }
+
+    form.addEventListener('submit', createTodoItem)
+
+})()
