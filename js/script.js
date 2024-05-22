@@ -50,6 +50,8 @@
         wrapper.innerHTML = `<div class="taskWrapper">
                                 <div class="taskHeading">#${data.id} | ${data.title}</div>
                                 <div class="taskDescription">${data.description}</div>
+                                <hr>
+                                <button class="btn btn-danger btn-sm" data-remove-btn>Remove</button>
                              </div>`
         return wrapper;
     }
