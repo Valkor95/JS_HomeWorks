@@ -71,7 +71,16 @@
         event.stopPropagation();
         if(!event.target.hasAttribute('data-remove-btn')) return;
 
-        console.log(event.target)
+        const currentWrapper = event.target.closest('[data-todo-id]');
+        const todoId = Number(currentWrapper.getAttribute('data-todo-id'));
+
+        const savedData = getData();
+        const dataToSave = savedData.filter(item => {
+            return item.id !== todoId;
+        })
+
+        localStorage.setItem(TODO_ITEMS, JSON.stringify(dataToSave));
+        currentWrapper.remove();
     }
 
     document.addEventListener('DOMContentLoaded', loadedHandler)
