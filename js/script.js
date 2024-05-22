@@ -4,6 +4,7 @@
 
     const TODO_ITEMS = 'todo-items';
     const form = document.querySelector('#todoForm');
+    let currentId = 1;
 
     const createTodoItem = (event) =>{
         event.preventDefault();
@@ -15,12 +16,30 @@
             data[input.name] = input.value
         })
 
-        console.log(data)
 
+
+        try {
+            const savedItem = saveTodoItems(data);
+            const todoItemHTML = createTodoIL(savedItem);
+        } catch (error){
+            alert(error.message)
+        } finally {
+            event.target.reset();
+        }
     }
 
-    const saveTodoItems = () => {
-
+    const getData = () =>{
+        const data = JSON.parse(localStorage.getItem(TODO_ITEMS)) ;
+        return !data ? [] : data;
+    }
+    const saveTodoItems = (data) => {
+        const dataToSave = structuredClone(data);
+        const savedData = getData()
+        dataToSave.id = currentId;
+        currentId++;
+        savedData.push(dataToSave);
+        localStorage.setItem(TODO_ITEMS, JSON.stringify(savedData));
+        return getData().at(-1)
     }
 
     const createTodoIL = () => {
