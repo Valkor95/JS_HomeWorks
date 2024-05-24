@@ -1,7 +1,7 @@
-"use strict"
+
 
 (function (){
-
+    'use strict'
     const objTodoList = {
         TODO_ITEMS: 'todo-items',
         form: document.querySelector('#todoForm'),
@@ -63,9 +63,48 @@
             return wrapper;
         },
 
+        loadedHandler()  {
+            const todoItems = this.getData();
+            if(!todoItems.length) return;
+
+            this.currentId = todoItems.at(-1).id + 1;
+            todoItems.forEach(item => {
+                const layout = this.createTodoItemLayout(item);
+                this.todoItemContainer.prepend(layout)
+            })
+        },
+
+        handlerRemoveTodo(event) {
+            event.stopPropagation();
+            if(!event.target.hasAttribute('data-remove-btn')) return;
+
+            const currentWrapper = event.target.closest('[data-todo-id]');
+            const todoId = Number(currentWrapper.getAttribute('data-todo-id'));
+
+            const savedData = this.getData();
+            const dataToSave = savedData.filter(item => {
+                return item.id !== todoId;
+            })
+
+            localStorage.setItem(this.TODO_ITEMS, JSON.stringify(dataToSave));
+            currentWrapper.remove();
+        },
+
+        handlerRemoveAllTodo() {
+            localStorage.removeItem(this.TODO_ITEMS);
+            this.todoItemContainer.innerHTML = ''
+        },
+
         init() {
             this.createTodoItem = this.createTodoItem.bind(this);
-            this.form.addEventListener('submit', this.createTodoItem)
+            this.loadedHandler = this.loadedHandler.bind(this);
+            this.handlerRemoveTodo = this.handlerRemoveTodo.bind(this);
+            this.handlerRemoveAllTodo = this.handlerRemoveAllTodo.bind(this);
+
+            this.form.addEventListener('submit', this.createTodoItem);
+            document.addEventListener('DOMContentLoaded', this.loadedHandler);
+            this.todoItemContainer.addEventListener('click', this.handlerRemoveTodo);
+            this.removeAll.addEventListener('click', this.handlerRemoveAllTodo)
         }
 
     }
