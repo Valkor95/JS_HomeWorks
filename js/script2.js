@@ -33,6 +33,20 @@
             }
         },
 
+        getData() {
+            const data = JSON.parse(localStorage.getItem(this.TODO_ITEMS));
+            return data ? data : []
+        },
+
+        saveTodoItem(data){
+            const dataToSave = structuredClone(data);
+            const saveData = this.getData();
+            dataToSave.id = this.currentId;
+            this.currentId++;
+            saveData.push(dataToSave);
+            localStorage.setItem(this.TODO_ITEMS, JSON.stringify(saveData));
+        },
+
         init() {
             this.form.addEventListener('submit', createTodoItem)
         }
