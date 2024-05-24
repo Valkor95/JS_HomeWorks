@@ -5,6 +5,7 @@
     const objTodoList = {
         TODO_ITEMS: 'todo-items',
         form: document.querySelector('#todoForm'),
+        formInputs: document.querySelectorAll('#todoForm input, #todoForm textarea'),
         todoItemContainer: document.querySelector('#todoItems'),
         currentId: 1,
         removeAll: document.querySelector('[data-remove-all]'),
@@ -18,7 +19,7 @@
                 description: null
             }
 
-            event.target.querySelectorAll('input, textarea').forEach(input => {
+            this.formInputs.forEach(input => {
                 data[input.name] = input.value
             })
 
