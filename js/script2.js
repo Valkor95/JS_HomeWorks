@@ -9,7 +9,7 @@
         currentId: 1,
         removeAll: document.querySelector('[data-remove-all]'),
 
-        createTodoItem: (event) => {
+        createTodoItem(event) {
             event.preventDefault();
             event.stopPropagation();
 
@@ -23,7 +23,7 @@
             })
 
             try{
-                const saveItem = saveTodoItem(data);
+                const saveItem = this.saveTodoItem(data);
                 const todoItemHTML = createTodoItemLayout(savedItem);
                 todoItemContainer.prepend(todoItemHTML);
             } catch (error) {
@@ -45,10 +45,26 @@
             this.currentId++;
             saveData.push(dataToSave);
             localStorage.setItem(this.TODO_ITEMS, JSON.stringify(saveData));
+            const dataFromLS = this.getData();
+            return dataFromLS.at(-1)
+        },
+
+        createTodoItemLayout:(data) => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'col-4';
+            wrapper.setAttribute('data-todo-id', data.id);
+
+            wrapper.innerHTML = `<div class="taskWrapper">
+                               <div class="taskHeading">#${data.id} | ${data.title}</div>
+                               <div class="taskDescription">${data.description}</div>
+                               <hr>
+                               <button class="btn btn-danger btn-sm" data-remove-btn>Remove</button>
+                               </div>`
+            return wrapper;
         },
 
         init() {
-            this.form.addEventListener('submit', createTodoItem)
+            this.form.addEventListener('submit', this.createTodoItem)
         }
 
     }
