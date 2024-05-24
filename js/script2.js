@@ -23,9 +23,9 @@
             })
 
             try{
-                const saveItem = this.saveTodoItem(data);
-                const todoItemHTML = createTodoItemLayout(savedItem);
-                todoItemContainer.prepend(todoItemHTML);
+                const savedItem = this.saveTodoItem(data);
+                const todoItemHTML = this.createTodoItemLayout(savedItem);
+                this.todoItemContainer.prepend(todoItemHTML);
             } catch (error) {
                 alert(error.message)
             } finally {
@@ -64,9 +64,12 @@
         },
 
         init() {
+            this.createTodoItem = this.createTodoItem.bind(this);
             this.form.addEventListener('submit', this.createTodoItem)
         }
 
     }
+
+    objTodoList.init()
 
 })()
