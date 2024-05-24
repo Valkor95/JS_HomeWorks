@@ -24,7 +24,12 @@
 
             try{
                 const saveItem = saveTodoItem(data);
-                const todoItemHTML
+                const todoItemHTML = createTodoItemLayout(savedItem);
+                todoItemContainer.prepend(todoItemHTML);
+            } catch (error) {
+                alert(error.message)
+            } finally {
+                event.target.reset()
             }
         },
 
