@@ -28,7 +28,7 @@
                 const todoItemHTML = this.createTodoItemLayout(savedItem);
                 this.todoItemContainer.prepend(todoItemHTML);
             } catch (error) {
-                alert(error.message)
+                console.warn(error.message);
             } finally {
                 event.target.reset()
             }
