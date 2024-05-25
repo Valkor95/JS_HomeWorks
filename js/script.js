@@ -9,6 +9,20 @@
             currentId: 1,
             removeAll: document.querySelector('[data-remove-all]'),
 
+            createFavoriteData(event){
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (event.target.hasAttribute('data-favorites-btn')){
+                    const currentWrapper = event.target.closest('[data-todo-id]');
+                    const currentWrapperId = Number(currentWrapper.getAttribute('data-todo-id'));
+
+                    const savedDataFav = this.getData();
+                    localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataFav));
+
+                }
+            },
+
             createTodoItem(event) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -101,11 +115,14 @@
                 this.loadedHandler = this.loadedHandler.bind(this);
                 this.handlerRemoveTodo = this.handlerRemoveTodo.bind(this);
                 this.handlerRemoveAllTodo = this.handlerRemoveAllTodo.bind(this);
+                this.createFavoriteData = this.createFavoriteData.bind(this);
 
                 this.form.addEventListener('submit', this.createTodoItem);
                 document.addEventListener('DOMContentLoaded', this.loadedHandler);
                 this.todoItemContainer.addEventListener('click', this.handlerRemoveTodo);
-                this.removeAll.addEventListener('click', this.handlerRemoveAllTodo)
+                this.removeAll.addEventListener('click', this.handlerRemoveAllTodo);
+
+                this.todoItemContainer.addEventListener('click', this.createFavoriteData);
             }
 
         }
