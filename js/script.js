@@ -34,19 +34,18 @@
                         localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav));
                     }
 
-                    try{
-                        const successBtn = this.changeBtnFav(event)
-                    }
-
+                    this.changeBtnFav(event)
 
                 }
             },
 
+
             changeBtnFav(event){
                 if(event.target.hasAttribute('data-favorites-btn')){
-                    const element = event.target.querySelector('[data-favorites-btn]');
-                    element.classList.remove('btn btn-primary btn-sm');
-                    element.classList.add('btn btn-success btn-sm')
+                    const element = event.target;
+                    element.classList.remove('btn-primary');
+                    element.classList.add('btn-success');
+                    element.textContent = 'Favorites';
                 }
             },
 
