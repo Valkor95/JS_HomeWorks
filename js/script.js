@@ -9,29 +9,34 @@
             currentId: 1,
             removeAll: document.querySelector('[data-remove-all]'),
 
+            getDataFavorites() {
+                const data = JSON.parse(localStorage.getItem(this.FAVORITES));
+                return data ? data : []
+            },
+
             createFavoriteData(event){
                 event.preventDefault();
                 event.stopPropagation();
 
                 if (event.target.hasAttribute('data-favorites-btn')){
                     const currentWrapper = event.target.closest('[data-todo-id]');
-                    const currentWrapperId = currentWrapper.getAttribute('data-todo-id');
+                    const currentWrapperId = Number(currentWrapper.getAttribute('data-todo-id'));
                     const savedDataAll = this.getData();
                     const savedDataAllFav = this.getDataFavorites()
 
 
-                    const savedDataFav = savedDataAll.filter(item => {
-                        return item === currentWrapperId;
-                    })
-                    localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataFav));
+                    const savedDataFav = savedDataAll.find(item =>
+                       item.id === currentWrapperId);
 
+
+                    if (savedDataFav && !savedDataAllFav.some(item => item.id === currentWrapperId)) {
+                        savedDataAllFav.push(savedDataFav);
+                        localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav));
+                    } else{return};
                 }
             },
 
-            getDataFavorites() {
-                const data = JSON.parse(localStorage.getItem(this.TODO_ITEMS));
-                return data ? data : []
-            },
+
 
             createTodoItem(event) {
                 event.preventDefault();
