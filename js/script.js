@@ -43,7 +43,11 @@
             },
 
             changeBtnFav(event){
-
+                if(event.target.hasAttribute('data-favorites-btn')){
+                    const element = event.target.querySelector('[data-favorites-btn]');
+                    element.classList.remove('btn btn-primary btn-sm');
+                    element.classList.add('btn btn-success btn-sm')
+                }
             },
 
             createTodoItem(event) {
