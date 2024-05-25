@@ -29,9 +29,15 @@
                        item.id === currentWrapperId);
 
 
-                    if (savedDataFav && !savedDataAllFav.some(item => item.id === currentWrapperId)) {
-                        savedDataAllFav.push(savedDataFav);
-                        localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav));
+                    if (savedDataFav) {
+                        const itemIndex = savedDataAllFav.findIndex(item => item.id === currentWrapperId);
+                        if(itemIndex === -1){
+                            savedDataAllFav.push(savedDataFav);
+                            localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav))
+                        } else {
+                            savedDataAllFav.splice(itemIndex, 1);
+                            localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav));
+                        }
                     }
 
                     this.changeBtnFav(event);
@@ -42,9 +48,15 @@
             changeBtnFav(event){
                 if(event.target.hasAttribute('data-favorites-btn')){
                     const element = event.target;
-                    element.classList.remove('btn-primary');
-                    element.classList.add('btn-success');
-                    element.textContent = 'Favorites';
+                    if(element.classList.contains('btn-primary')){
+                        element.classList.remove('btn-primary');
+                        element.classList.add('btn-success');
+                        element.textContent = 'Favorites';
+                    } else {
+                        element.classList.remove('btn-success');
+                        element.classList.add('btn-primary');
+                        element.textContent = 'Add to Favorites';
+                    }
                 }
             },
 
@@ -142,7 +154,7 @@
                 this.handlerRemoveAllTodo = this.handlerRemoveAllTodo.bind(this);
 
                 this.createFavoriteData = this.createFavoriteData.bind(this);
-                this.changeBtnFav  = this.changeBtnFav.bind(this);
+                this.changeBtnFav = this.changeBtnFav.bind(this);
 
                 this.form.addEventListener('submit', this.createTodoItem);
                 document.addEventListener('DOMContentLoaded', this.loadedHandler);
@@ -150,7 +162,7 @@
                 this.removeAll.addEventListener('click', this.handlerRemoveAllTodo);
 
                 this.todoItemContainer.addEventListener('click', this.createFavoriteData);
-                this.todoItemContainer.addEventListener('click', this.changeBtnFav)
+
             }
 
         }
