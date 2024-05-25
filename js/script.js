@@ -34,13 +34,17 @@
                         localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav));
                     }
 
+                    try{
+                        const successBtn = this.changeBtnFav(event)
+                    }
+
 
                 }
             },
 
+            changeBtnFav(event){
 
-
-
+            },
 
             createTodoItem(event) {
                 event.preventDefault();
@@ -136,6 +140,7 @@
                 this.handlerRemoveAllTodo = this.handlerRemoveAllTodo.bind(this);
 
                 this.createFavoriteData = this.createFavoriteData.bind(this);
+                this.changeBtnFav  = this.changeBtnFav.bind(this);
 
                 this.form.addEventListener('submit', this.createTodoItem);
                 document.addEventListener('DOMContentLoaded', this.loadedHandler);
@@ -143,6 +148,7 @@
                 this.removeAll.addEventListener('click', this.handlerRemoveAllTodo);
 
                 this.todoItemContainer.addEventListener('click', this.createFavoriteData);
+                this.todoItemContainer.addEventListener('click', this.changeBtnFav)
             }
 
         }
