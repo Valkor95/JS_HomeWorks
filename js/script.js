@@ -32,9 +32,13 @@
                     if (savedDataFav && !savedDataAllFav.some(item => item.id === currentWrapperId)) {
                         savedDataAllFav.push(savedDataFav);
                         localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataAllFav));
-                    } else{return};
+                    }
+
+
                 }
             },
+
+
 
 
 
@@ -130,6 +134,7 @@
                 this.loadedHandler = this.loadedHandler.bind(this);
                 this.handlerRemoveTodo = this.handlerRemoveTodo.bind(this);
                 this.handlerRemoveAllTodo = this.handlerRemoveAllTodo.bind(this);
+
                 this.createFavoriteData = this.createFavoriteData.bind(this);
 
                 this.form.addEventListener('submit', this.createTodoItem);
