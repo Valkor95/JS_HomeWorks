@@ -15,12 +15,22 @@
 
                 if (event.target.hasAttribute('data-favorites-btn')){
                     const currentWrapper = event.target.closest('[data-todo-id]');
-                    const currentWrapperId = Number(currentWrapper.getAttribute('data-todo-id'));
+                    const currentWrapperId = currentWrapper.getAttribute('data-todo-id');
+                    const savedDataAll = this.getData();
+                    const savedDataAllFav = this.getDataFavorites()
 
-                    const savedDataFav = this.getData();
+
+                    const savedDataFav = savedDataAll.filter(item => {
+                        return item === currentWrapperId;
+                    })
                     localStorage.setItem(this.FAVORITES, JSON.stringify(savedDataFav));
 
                 }
+            },
+
+            getDataFavorites() {
+                const data = JSON.parse(localStorage.getItem(this.TODO_ITEMS));
+                return data ? data : []
             },
 
             createTodoItem(event) {
