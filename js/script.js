@@ -2,6 +2,7 @@
         'use strict'
         const objTodoList = {
             TODO_ITEMS: 'todo-items',
+            FAVORITES: 'favorites-items',
             form: document.querySelector('#todoForm'),
             formInputs: document.querySelectorAll('#todoForm input, #todoForm textarea'),
             todoItemContainer: document.querySelector('#todoItems'),
