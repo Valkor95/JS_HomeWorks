@@ -1,7 +1,3 @@
-"use strict" //eslint-disable-line
-
-
-
     (function (){
         'use strict'
         const objTodoList = {
