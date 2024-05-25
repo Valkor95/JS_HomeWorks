@@ -59,6 +59,7 @@
                                <div class="taskDescription">${data.description}</div>
                                <hr>
                                <button class="btn btn-danger btn-sm" data-remove-btn>Remove</button>
+                               <button class="btn btn-primary btn-sm" data-favorites-btn>Favorites</button>
                                </div>`
                 return wrapper;
             },
@@ -110,5 +111,6 @@
         }
 
         objTodoList.init()
+
 
     })()
