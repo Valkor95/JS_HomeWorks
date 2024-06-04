@@ -30,6 +30,8 @@ const freezeObj = function (obj){
 
 console.log(freezeObj(user))
 
+console.log(user)
+
 user.data.d.d1.b2 = 'hello'
 
 console.log(user)
