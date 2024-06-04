@@ -19,5 +19,17 @@ const user = {
 }
 
 const freezeObj = function (obj){
+    Object.freeze(obj);
 
+    for(const key in obj){
+        if (obj.hasOwnProperty(key) && typeof obj[key] === 'object'){
+            freezeObj(obj[key]);
+        }
+    }
 }
+
+console.log(freezeObj(user))
+
+user.data.d.d1.b2 = 'hello'
+
+console.log(user)
