@@ -53,7 +53,12 @@ const Controller = {
 
     removeHandler(event){
         event.stopPropagation();
-        const {target: deleteBtn} = event;
+        const {target} = event;
+        const btn = target.closest('[data-btn="delete"]');
+        if (!btn) return;
+
+        const todoItemId = Number(btn.closest(`[data-id]`).getAttribute('data-id'));
+
     },
 
     validateSelector(selector){

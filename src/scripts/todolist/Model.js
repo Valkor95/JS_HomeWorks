@@ -26,6 +26,13 @@ const Model = {
         return this.getData().at(-1);
     },
 
+    removeData(id){
+        const savedData = this.getData();
+        const index = savedData.findIndex((item) => {
+            return item.id === id;
+        })
+    },
+
     init(){
         const data = this.getData();
         if(!data.length) return;
