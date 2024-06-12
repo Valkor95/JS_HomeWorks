@@ -5,18 +5,13 @@ const Controller = {
     _todosContainerElement: null,
 
 
-    init(selectors){
-
+    init({form, todosContainer}){
+        this.formSelector = form;
+        this.todosContainerSelector = todosContainer;
+        console.log(this)
     },
 
-    validateSelector(selector){
-        if(typeof selector !== "string") throw new Error('Selector must be a string!');
-        if(selector.trim() === '') throw new Error('Selector must not be empty!');
 
-        const element = document.querySelector(selector);
-
-        if(element === null) throw new Error('Selector not found in DOM!')
-    },
 
     set formSelector (selector){
         this.validateSelector(selector);
@@ -32,6 +27,14 @@ const Controller = {
 
     },
 
+    validateSelector(selector){
+        if(typeof selector !== "string") throw new Error('Selector must be a string!');
+        if(selector.trim() === '') throw new Error('Selector must not be empty!');
+
+        const element = document.querySelector(selector);
+
+        if(element === null) throw new Error('Selector not found in DOM!')
+    },
     get formSelector (){
         return this._formSelector
     },
