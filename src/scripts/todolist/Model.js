@@ -34,7 +34,10 @@ const Model = {
 
         const removedItem = savedData.splice(index, 1);
         localStorage.setItem(DB_KEY, JSON.stringify(savedData));
-        console.log(savedData, removedItem)
+        const updateData = this.getData();
+        return !updateData.some((item) => {
+            return item.id === removedItem.id
+        })
     },
 
     init(){

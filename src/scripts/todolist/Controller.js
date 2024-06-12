@@ -58,7 +58,13 @@ const Controller = {
         if (!btn) return;
 
         const todoItemId = Number(btn.closest(`[data-id]`).getAttribute('data-id'));
-        Model.removeData(todoItemId)
+        const isRemoved = Model.removeData(todoItemId);
+
+        if(isRemoved){
+            View.removeItem(todoItemId);
+        } else {
+            alert('Cannot delete todo Item!');
+        }
     },
 
     validateSelector(selector){

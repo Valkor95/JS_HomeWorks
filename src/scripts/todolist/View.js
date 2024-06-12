@@ -5,6 +5,10 @@ const View = {
     _formElement: null,
     _todosContainerElement: null,
 
+    removeItem(id){
+        this.todosContainerElement.querySelector(`[data-id="${id}"]`).remove();
+    },
+
     renderItem(data){
         const layout = this.createTemplate(data);
         this.todosContainerElement.prepend(layout);
