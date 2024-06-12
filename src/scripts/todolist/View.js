@@ -14,7 +14,7 @@ const View = {
         const wrap = document.createElement('div');
         wrap.classList.add('col-4');
         wrap.setAttribute('data-id', id);
-        wrap.innerHTML = `<div class="col-4">-->
+        wrap.innerHTML = `
                             <div class="taskWrapper">
                                <div class="taskHeading">${title}</div>
                                <div class="taskDescription">${description}</div>
@@ -38,18 +38,6 @@ const View = {
 
         if(element === null) throw new Error('Selector not found in DOM!')
     },
-    get formSelector (){
-        return this._formSelector
-    },
-    get todosContainerSelector (){
-        return this._todosContainerSelector
-    },
-    get formElement (){
-        return this._formElement
-    },
-    get todosContainerElement (){
-        return this._todosContainerElement
-    },
     set formSelector (selector){
         this.validateSelector(selector);
         this._formSelector = selector;
@@ -62,6 +50,19 @@ const View = {
         this._todosContainerElement = document.querySelector(selector)
 
     },
+    get formSelector (){
+        return this._formSelector
+    },
+    get todosContainerSelector (){
+        return this._todosContainerSelector
+    },
+    get formElement (){
+        return this._formElement
+    },
+    get todosContainerElement (){
+        return this._todosContainerElement
+    },
+
 }
 
 export default View;

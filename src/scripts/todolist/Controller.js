@@ -22,17 +22,20 @@ const Controller = {
     formHandler(event){
         event.preventDefault();
 
-        let data = Array.from(event.target.querySelectorAll('input, textarea, select'))
-            .reduce((acc, input) => {
-                acc[input.name] = input.value;
-                return acc
-            }, {})
+        let data =
+            Array.from(event.target.querySelectorAll('input, textarea, select'))
+                .reduce((acc, input) => {
+                    acc[input.name] = input.value;
+                    return acc;
+                }, {})
 
-
+        try {
             data = Model.setData(data);
             View.renderItem(data);
-
-
+            View.resetForm();
+        } catch (error) {
+            alert('Cannot save data - DB is full!')
+        }
 
     },
 
@@ -43,6 +46,18 @@ const Controller = {
         const element = document.querySelector(selector);
 
         if(element === null) throw new Error('Selector not found in DOM!')
+    },
+    set formSelector (selector){
+        this.validateSelector(selector);
+        this._formSelector = selector;
+        this._formElement = document.querySelector(selector)
+
+    },
+    set todosContainerSelector (selector){
+        this.validateSelector(selector);
+        this._todosContainerSelector = selector;
+        this._todosContainerElement = document.querySelector(selector)
+
     },
     get formSelector (){
         return this._formSelector
@@ -57,19 +72,6 @@ const Controller = {
         return this._todosContainerElement
     },
 
-    set formSelector (selector){
-        this.validateSelector(selector);
-        this._formSelector = selector;
-        this._formElement = document.querySelector(selector)
-
-    },
-
-    set todosContainerSelector (selector){
-        this.validateSelector(selector);
-        this._todosContainerSelector = selector;
-        this._todosContainerElement = document.querySelector(selector)
-
-    },
 
 }
 
