@@ -18,8 +18,12 @@ const View = {
                             <div class="taskWrapper">
                                <div class="taskHeading">${title}</div>
                                <div class="taskDescription">${description}</div>
-                            </div>
-                          </div>`
+                               <hr>
+                               <div>
+                                   <button data-btn="delete" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                   <button data-btn="info" type="button" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></button>
+                               </div>
+                            </div>`
 
         return wrap;
     },
