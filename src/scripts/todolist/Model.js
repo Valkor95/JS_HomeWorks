@@ -29,8 +29,12 @@ const Model = {
     removeData(id){
         const savedData = this.getData();
         const index = savedData.findIndex((item) => {
-            return item.id === id;
+            return Number(item.id) === Number(id);
         })
+
+        const removedItem = savedData.splice(index, 1);
+        localStorage.setItem(DB_KEY, JSON.stringify(savedData));
+        console.log(savedData, removedItem)
     },
 
     init(){

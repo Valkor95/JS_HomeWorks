@@ -58,7 +58,7 @@ const Controller = {
         if (!btn) return;
 
         const todoItemId = Number(btn.closest(`[data-id]`).getAttribute('data-id'));
-
+        Model.removeData(todoItemId)
     },
 
     validateSelector(selector){
