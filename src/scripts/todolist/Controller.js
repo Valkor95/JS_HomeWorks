@@ -4,15 +4,9 @@ const Controller = {
     _formElement: null,
     _todosContainerElement: null,
 
-    set formSelector (selector){
-        this.validateSelector(selector);
-        this._formSelector = selector;
-        this._formElement = document.querySelector(selector)
-
-    },
 
     init(selectors){
-        console.log(selectors)
+
     },
 
     validateSelector(selector){
@@ -23,6 +17,34 @@ const Controller = {
 
         if(element === null) throw new Error('Selector not found in DOM!')
     },
+
+    set formSelector (selector){
+        this.validateSelector(selector);
+        this._formSelector = selector;
+        this._formElement = document.querySelector(selector)
+
+    },
+
+    set todosContainerSelector (selector){
+        this.validateSelector(selector);
+        this._todosContainerSelector = selector;
+        this._todosContainerElement = document.querySelector(selector)
+
+    },
+
+    get formSelector (){
+        return this._formSelector
+    },
+    get todosContainerSelector (){
+        return this._todosContainerSelector
+    },
+    get formElement (){
+        return this._formElement
+    },
+    get todosContainerElement (){
+        return this._todosContainerElement
+    },
+
 }
 
 export default Controller;
