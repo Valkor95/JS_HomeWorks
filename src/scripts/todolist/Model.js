@@ -18,8 +18,8 @@ const Model = {
             throw new Error('No capacity in DB!')
         }
 
-        const dataToSave = {...data, id: this.currentId}
-        savedData.push(dataToSave)
+        const dataToSave = {...data, id: this.currentId};
+        savedData.push(dataToSave);
         localStorage.setItem(DB_KEY, JSON.stringify(savedData));
         this.currentId += 1;
 
