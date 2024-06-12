@@ -7,4 +7,5 @@ const selectors = {
     todosContainer: '#todoItems'
 }
 
-Controller.init(selectors)
+View.init(selectors);
+Controller.init(selectors);

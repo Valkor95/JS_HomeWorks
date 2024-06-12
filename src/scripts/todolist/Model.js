@@ -19,7 +19,7 @@ const Model = {
         }
 
         const dataToSave = {...data, id: this.currentId};
-        savedData.push(dataToSave);
+        savedData.push(dataToSave)
         localStorage.setItem(DB_KEY, JSON.stringify(dataToSave));
         this.currentId += 1;
 

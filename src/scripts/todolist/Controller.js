@@ -1,5 +1,5 @@
-import Model from "./Model";
-import View from "./View";
+import Model from "./Model.js";
+import View from "./View.js";
 
 const Controller = {
     _formSelector: null,
@@ -28,12 +28,10 @@ const Controller = {
                 return acc
             }, {})
 
-        try{
+
             data = Model.setData(data);
             View.renderItem(data);
-        } catch (error){
-            alert('Cannot save data - DB is full')
-        }
+
 
 
     },
