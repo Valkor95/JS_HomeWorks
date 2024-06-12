@@ -13,12 +13,14 @@ const Controller = {
         this.todosContainerSelector = todosContainer;
         this.formHandler = this.formHandler.bind(this);
         this.loadedHandler = this.loadedHandler.bind(this);
+        this.removeHandler = this.removeHandler.bind(this);
         this.setEvents();
     },
 
     setEvents(){
         this.formElement.addEventListener('submit', this.formHandler);
-        document.addEventListener('DOMContentLoaded', this.loadedHandler)
+        document.addEventListener('DOMContentLoaded', this.loadedHandler);
+        this._todosContainerElement.addEventListener('click', this.removeHandler)
     },
 
     formHandler(event){
@@ -47,6 +49,11 @@ const Controller = {
         data.forEach((item) => {
             View.renderItem(item);
         })
+    },
+
+    removeHandler(event){
+        event.stopPropagation();
+        const {target: deleteBtn} = event;
     },
 
     validateSelector(selector){
