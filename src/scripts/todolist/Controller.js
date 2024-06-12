@@ -8,10 +8,17 @@ const Controller = {
     init({form, todosContainer}){
         this.formSelector = form;
         this.todosContainerSelector = todosContainer;
-        console.log(this)
+        this.formHandler = this.formHandler.bind(this)
+        this.setEvents();
     },
 
+    setEvents(){
+        this.formElement.addEventListener('submit', this.formHandler)
+    },
 
+    formHandler(event){
+        event.preventDefault()
+    },
 
     set formSelector (selector){
         this.validateSelector(selector);
