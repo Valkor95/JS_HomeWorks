@@ -1,4 +1,5 @@
 import Model from "./Model";
+import View from "./View";
 
 const Controller = {
     _formSelector: null,
@@ -21,11 +22,18 @@ const Controller = {
     formHandler(event){
         event.preventDefault();
 
-        const data = Array.from(event.target.querySelectorAll('input, textarea, select'))
+        let data = Array.from(event.target.querySelectorAll('input, textarea, select'))
             .reduce((acc, input) => {
                 acc[input.name] = input.value;
                 return acc
             }, {})
+
+        try{
+            data = Model.setData(data);
+            View.renderItem(data);
+        } catch (error){
+            alert('Cannot save data - DB is full')
+        }
 
 
     },

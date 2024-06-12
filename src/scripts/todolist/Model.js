@@ -13,12 +13,17 @@ const Model = {
 
     setData(data){
         const savedData = this.getData();
+
+        if(savedData.length > 150){
+            throw new Error('No capacity in DB!')
+        }
+
         const dataToSave = {...data, id: this.currentId};
         savedData.push(dataToSave);
         localStorage.setItem(DB_KEY, JSON.stringify(dataToSave));
         this.currentId += 1;
 
-        return
+        return this.getData().at(-1);
     }
 }
 
