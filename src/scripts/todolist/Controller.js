@@ -7,20 +7,23 @@ const Controller = {
     _formElement: null,
     _todosContainerElement: null,
 
-
     init({form, todosContainer}){
         this.formSelector = form;
         this.todosContainerSelector = todosContainer;
         this.formHandler = this.formHandler.bind(this);
         this.loadedHandler = this.loadedHandler.bind(this);
         this.removeHandler = this.removeHandler.bind(this);
+        this.viewHandler = this.viewHandler.bind(this);
+
         this.setEvents();
     },
 
     setEvents(){
         this.formElement.addEventListener('submit', this.formHandler);
         document.addEventListener('DOMContentLoaded', this.loadedHandler);
-        this._todosContainerElement.addEventListener('click', this.removeHandler)
+        this.todosContainerElement.addEventListener('click', this.removeHandler);
+        this.todosContainerElement.addEventListener('click', this.viewHandler);
+
     },
 
     formHandler(event){
@@ -65,6 +68,19 @@ const Controller = {
         } else {
             alert('Cannot delete todo Item!');
         }
+    },
+
+    viewHandler(event){
+        event.stopPropagation();
+        const {target} = event;
+
+        const btn = target.closest('[data-btn="info"]');
+        if (!btn) return;
+
+        const todoItemId = Number(btn.closest(`[data-id]`).getAttribute('data-id'));
+        const todoItemData = Model.getById(todoItemId);
+
+        View.showInfo(todoItemData)
     },
 
     validateSelector(selector){

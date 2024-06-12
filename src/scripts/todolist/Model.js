@@ -3,6 +3,13 @@ import {DB_KEY} from "./constants.js";
 const Model = {
     _currentId: 1,
 
+    getById(id){
+        const data = this.getData();
+        return data.find(item => {
+            return item.id === id
+        })
+    },
+
     getData() {
         const data = JSON.parse(localStorage.getItem(DB_KEY));
         if(data === null) {

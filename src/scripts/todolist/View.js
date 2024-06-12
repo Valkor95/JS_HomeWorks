@@ -4,6 +4,13 @@ const View = {
     _todosContainerSelector: null,
     _formElement: null,
     _todosContainerElement: null,
+    offCanvas: null,
+
+    showInfo({id, title, description}){
+        this.offCanvas._element.querySelector('.title').innerHTML = title + ' #' + id
+        this.offCanvas._element.querySelector('.description').innerHTML = description
+        this.offCanvas.show()
+    },
 
     removeItem(id){
         this.todosContainerElement.querySelector(`[data-id="${id}"]`).remove();
@@ -35,7 +42,8 @@ const View = {
     init({form, todosContainer}){
         this.formSelector = form;
         this.todosContainerSelector = todosContainer;
-
+        const infoWindow = document.querySelector('#offcanvasExample');
+        this.offCanvas = new bootstrap.Offcanvas(infoWindow);
     },
 
     validateSelector(selector){
