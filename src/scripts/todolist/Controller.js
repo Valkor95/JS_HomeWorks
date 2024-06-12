@@ -1,3 +1,5 @@
+import Model from "./Model";
+
 const Controller = {
     _formSelector: null,
     _todosContainerSelector: null,
@@ -17,20 +19,14 @@ const Controller = {
     },
 
     formHandler(event){
-        event.preventDefault()
-    },
+        event.preventDefault();
 
-    set formSelector (selector){
-        this.validateSelector(selector);
-        this._formSelector = selector;
-        this._formElement = document.querySelector(selector)
+        const data = Array.from(event.target.querySelectorAll('input, textarea, select'))
+            .reduce((acc, input) => {
+                acc[input.name] = input.value;
+                return acc
+            }, {})
 
-    },
-
-    set todosContainerSelector (selector){
-        this.validateSelector(selector);
-        this._todosContainerSelector = selector;
-        this._todosContainerElement = document.querySelector(selector)
 
     },
 
@@ -53,6 +49,20 @@ const Controller = {
     },
     get todosContainerElement (){
         return this._todosContainerElement
+    },
+
+    set formSelector (selector){
+        this.validateSelector(selector);
+        this._formSelector = selector;
+        this._formElement = document.querySelector(selector)
+
+    },
+
+    set todosContainerSelector (selector){
+        this.validateSelector(selector);
+        this._todosContainerSelector = selector;
+        this._todosContainerElement = document.querySelector(selector)
+
     },
 
 }
