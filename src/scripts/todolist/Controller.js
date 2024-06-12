@@ -34,7 +34,7 @@ const Controller = {
             View.renderItem(data);
             View.resetForm();
         } catch (error) {
-            alert('Cannot save data - DB is full!')
+
         }
 
     },
