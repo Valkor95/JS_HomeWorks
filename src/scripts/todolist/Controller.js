@@ -11,16 +11,19 @@ const Controller = {
     init({form, todosContainer}){
         this.formSelector = form;
         this.todosContainerSelector = todosContainer;
-        this.formHandler = this.formHandler.bind(this)
+        this.formHandler = this.formHandler.bind(this);
+        this.loadedHandler = this.loadedHandler.bind(this);
         this.setEvents();
     },
 
     setEvents(){
-        this.formElement.addEventListener('submit', this.formHandler)
+        this.formElement.addEventListener('submit', this.formHandler);
+        document.addEventListener('DOMContentLoaded', this.loadedHandler)
     },
 
     formHandler(event){
         event.preventDefault();
+        event.stopPropagation();
 
         let data =
             Array.from(event.target.querySelectorAll('input, textarea, select'))
@@ -37,6 +40,13 @@ const Controller = {
 
         }
 
+    },
+
+    loadedHandler(){
+        const data = Model.getData();
+        data.forEach((item) => {
+            View.renderItem(item);
+        })
     },
 
     validateSelector(selector){
