@@ -8,4 +8,5 @@ const selectors = {
 }
 
 View.init(selectors);
+Model.init();
 Controller.init(selectors);

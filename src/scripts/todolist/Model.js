@@ -1,7 +1,7 @@
 import {DB_KEY} from "./constants.js";
 
 const Model = {
-    currentId: 1,
+    _currentId: 1,
 
     getData() {
         const data = JSON.parse(localStorage.getItem(DB_KEY));
@@ -25,6 +25,21 @@ const Model = {
 
         return this.getData().at(-1);
     },
+
+    init(){
+        const data = this.getData();
+        if(!data.length) return;
+        this.currentId = ++data.at(-1).id
+    },
+
+    get currentId(){
+        return this._currentId
+    },
+
+    set currentId(value){
+        if(typeof value !== 'number') throw new Error('ID must be a number!')
+        this._currentId = value;
+    }
 }
 
 export default Model;
