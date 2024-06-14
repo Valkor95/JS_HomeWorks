@@ -1,1 +1,6 @@
-"use strict" //eslint-disable-line
+(function (){
+    "use strict" //eslint-disable-line
+
+    
+
+})()
