@@ -1,8 +1,6 @@
-(function (){
-    "use strict" //eslint-disable-line
-    import Student from './Student.js';
+import Student from './Student.js';
+
+console.log(Student)
 
 
 
-
-})()

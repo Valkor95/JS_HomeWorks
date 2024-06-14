@@ -1,11 +1,11 @@
-(function (){
-    function Student(name, lastname, data){
+function Student(name, lastname, data){
         this.name = name;
         this.lastname = lastname;
         this.data = data;
         this.grade = new Array();
-        this.attendance = new Array()
+        this.attendance = new Array(25).fill(null)
         this.index = 25;
+
 
         Student.prototype.age = function (data){
 
@@ -30,6 +30,6 @@
     }
 
     export default Student
-})()
+
 
 
