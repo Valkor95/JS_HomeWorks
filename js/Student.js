@@ -35,6 +35,15 @@ function Student(name, lastname, data){
                 }
         };
 
+        Student.prototype.arrAttendance = function (arrAttend){
+                for (let i = 0; i < arrAttend.length; i++){
+                        if (this.currentIndex >= 25) break;
+                        this.attendance[this.currentIndex] = arrAttend[i];
+                        this.currentIndex++;
+                }
+
+        }
+
         Student.prototype.averageAttendance = function (){
                 const attendedClasses = this.attendance.filter(item => item === true).length;
                 return attendedClasses/25;
@@ -52,11 +61,6 @@ function Student(name, lastname, data){
                         return 'Редиска!'
                 }
         };
-
-        Student.prototype.init = function (){
-               this.age = this.age.bind(this)
-        }
-
     }
 
     export default Student
