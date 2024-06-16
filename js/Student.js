@@ -17,32 +17,30 @@ function Student(name, lastname, data){
                 return this.grades.length ? sum/this.grades.length : 0;
         };
 
-        Student.prototype.present = function (){
-                if (this.currentIndex < 25){
-                        this.attendance[this.currentIndex] = true;
-                        this.currentIndex++
+        Student.prototype.arrAttendance = function (boolItem){
+                if (this.currentIndex < 25) {
+                        this.attendance[this.currentIndex] = boolItem;
+                        this.currentIndex++;
                 } else {
-                        console.log('Attendance is full');
+                        throw new Error('Attendance is full')
                 }
+        };
+
+        Student.prototype.arrBoolAttendance = function (attendanceArr){
+                attendanceArr.forEach(item => {
+                        if(this.currentIndex < 25){
+                                this.arrAttendance(item)
+                        }
+                });
+        };
+
+        Student.prototype.present = function (){
+                this.arrAttendance(true)
         };
 
         Student.prototype.absent = function (){
-                if(this.currentIndex < 25){
-                        this.attendance[this.currentIndex] = false;
-                        this.currentIndex++;
-                } else {
-                        console.log('Attendance is full')
-                }
+                this.arrAttendance(false)
         };
-
-        Student.prototype.arrAttendance = function (arrAttend){
-                for (let i = 0; i < arrAttend.length; i++){
-                        if (this.currentIndex >= 25) break;
-                        this.attendance[this.currentIndex] = arrAttend[i];
-                        this.currentIndex++;
-                }
-
-        }
 
         Student.prototype.averageAttendance = function (){
                 const attendedClasses = this.attendance.filter(item => item === true).length;

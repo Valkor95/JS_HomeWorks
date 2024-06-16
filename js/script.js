@@ -8,12 +8,17 @@ student1.grades.push(95, 92, 89)
 student2.grades.push(89, 90, 95)
 student3.grades.push(69, 72, 55)
 
-student1.arrAttendance([true, true, true, true, true, true, true, true, true, false, true, true, true,
-    true, true, true, true, true, true, true, true, true, true, true]);
-student2.arrAttendance([true, true, true, true, false, true, true, true, true, false, true, true, true,
-    true, false, true, true, true, true, false, true, true, true, false]);
-student3.arrAttendance([true, true, false, true, true, false, true, true, false, true, true, false, true,
-    true, false, true, true, false, true, true, false, true, true, false]);
+try{
+    student1.arrBoolAttendance([true, true, true, true, true, true, true, true, true, false, true, true, true,
+        true, true, true, true, true, true, true, true, true, true, true]);
+    student2.arrBoolAttendance([true, true, true, true, false, true, true, true, true, false, true, true, true,
+        true, false, true, true, true, true, false, true, true, true, false]);
+    student3.arrBoolAttendance([true, true, false, true, true, false, true, true, false, true, true, false, true,
+        true, false, true, true, false, true, true, false, true, true, false]);
+} catch (error){
+    console.log(error.message)
+}
+
 
 
 console.log(`Студент №1: ${student1.summary()}`)
