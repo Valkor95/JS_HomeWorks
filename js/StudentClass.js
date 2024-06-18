@@ -13,21 +13,19 @@ class Student {
         this.#lessonsCount = 25;
     }
 
-    setAttendance (bool){
+    #setAttendance (bool){
         if (typeof bool !== 'boolean') throw new Error(`${bool} should be boolean`)
 
-        this.#attendance[this.#currentLessonIndex] = false;
+        this.#attendance[this.#currentLessonIndex] = bool;
         this.#currentLessonIndex += 1;
     }
 
     present (){
-        this.#attendance[this.#currentLessonIndex] = true;
-        this.#currentLessonIndex += 1;
+        this.#setAttendance(true)
     };
 
     absent (){
-        this.#attendance[this.#currentLessonIndex] = false;
-        this.#currentLessonIndex += 1;
+        this.#setAttendance(false)
     };
 
     summary (){
