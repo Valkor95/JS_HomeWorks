@@ -29,6 +29,13 @@ class Student {
     };
 
     summary (){
+        if (this.avGrade > 90 && this.avAttendance > 0.9){
+            return 'Молодець!';
+        } else if (this.avGrade > 90 || this.avAttendance > 0.9){
+            return 'Добре, але можно краще!';
+        } else {
+            return 'Редиска!'
+        }
 
     }
 
@@ -68,7 +75,24 @@ class Student {
     }
 
     get avGrade(){
+        let sum = 0;
+        let lessonsWithGrades = 0;
+        for(let i = 0; i < this.#currentLessonIndex; i++){
+            if(this.#grades[i] !== null) lessonsWithGrades += 1;
+            sum += this.#grades[i]
+        }
 
+        return  +Number(sum/lessonsWithGrades).toFixed(2)
+    };
+
+    get avAttendance(){
+        let visitedLessons = 0;
+        for(let i = 0; i < this.#currentLessonIndex; i++){
+            if(!this.#attendance[i]) continue;
+            visitedLessons += 1
+        }
+
+        return +Number(visitedLessons/this.#currentLessonIndex).toFixed(2)
     };
 
     set #lessonsCount(count){
@@ -79,6 +103,5 @@ class Student {
     }
 }
 
-const s = new Student('Petr', 'Bulkin', 2000);
-console.log(s)
+
 export default Student

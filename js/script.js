@@ -36,6 +36,7 @@ console.log(`---------------------`)
 console.log(`Возраст ${student3.name}: ${student3.age()}`);
 console.log(`Средняя оценка ${student3.name}: ${student3.averageMark()}`);
 console.log(`Средняя посещаемость ${student3.name}: ${student3.averageAttendance()}`);
+console.log('---------------------')
 
 
 
