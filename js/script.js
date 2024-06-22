@@ -20,8 +20,33 @@ class PostFinder {
 
     onSearchPost (){
         const postId = this.postIdInput.value
-        console.log(postId)
+        if (postId < 1 || postId > 100){
+            throw new Error('Post ID must be between 1 and 100');
+            return
+        }
+        this.fetchPostById(postId)
+    }
 
+    fetchPostById(postId){
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+            .then(response => {
+                if (!response.ok){
+                    throw new Error('Post not found!')
+                }
+                return response.json()
+            })
+            .then(post => {
+                this.displayPost(post);
+            })
+            .catch(error => {
+                throw new Error(`Error fetching post: ${error}`);
+            })
+    }
+
+    displayPost(post){
+        this.postContainer.innerHTML = '';
+
+        const postElement = new
     }
 
 
@@ -29,4 +54,4 @@ class PostFinder {
 
 const p = new PostFinder()
 
-console.log(p)
+// console.log(p)
