@@ -1,5 +1,26 @@
 "use strict" //eslint-disable-line
 
+class PostElement{
+    post = null;
+    element = null;
+    constructor(post) {
+        this.post = post;
+        this.element = document.createElement('div');
+        this.element.className = 'post';
+    }
+
+    render (){
+        this.element.innerHTML = `
+        <h2>${this.post.title}</h2>
+        <p>${this.post.body}</p>
+        <button class="load-comments">Load comments</button>`
+
+        this.loadCommentButton = this.element.querySelector('.load-comments');
+        this.element.dataset.id = this.post.id;
+        return this.element;
+    }
+}
+
 class PostFinder {
     postContainer = null;
     searchButton = null;
@@ -14,6 +35,7 @@ class PostFinder {
 
     init(){
         this.onSearchPost = this.onSearchPost.bind(this);
+        this.fetchCommentsByPostId = this.fetchCommentsByPostId.bind(this)
 
         this.searchButton.addEventListener('click', this.onSearchPost)
     }
@@ -46,12 +68,39 @@ class PostFinder {
     displayPost(post){
         this.postContainer.innerHTML = '';
 
-        const postElement = new
+        const postElement = new PostElement(post);
+        this.postContainer.append(postElement.render());
+
+        postElement.loadCommentButton.addEventListener('click', this.fetchCommentsByPostId)
     }
 
+    fetchCommentsByPostId(){
+        const postId = document.querySelector('.post').dataset.id;
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+            .then(res => res.json())
+            .then(comments => {
+                this.displayComments(comments);
+            })
+            .catch(error => {
+                throw new Error('Error fetching comments');
+            });
+    }
 
+    displayComments(comments){
+        const commentsContainer = document.createElement('div');
+        commentsContainer.className = 'comments';
+        commentsContainer.innerHTML = comments.map(comment => `
+            <div>
+                <h4>${comment.name}</h4>
+                <p>${comment.body}</p>
+                <p><small>By: ${comment.email}</small></p>
+            </div>
+        `).join('');
+
+        this.postContainer.append(commentsContainer);
+    }
 }
 
 const p = new PostFinder()
+p.init()
 
-// console.log(p)
