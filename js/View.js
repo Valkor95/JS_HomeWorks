@@ -10,5 +10,20 @@ export class View{
         });
     }
 
+    static displayPhotos(photos){
+        const photoList = document.querySelector('#photo-list');
+        photos.forEach(photo => {
+            const photoItem = document.createElement('div');
+            photoItem.className = `col-md-3 mb-3`;
+            photoItem.innerHTML = `
+                 <div class="card">
+                      <img src="${photo.thumbnailUrl}" class="card-img-top" alt="${photo.title}">
+                      <div class="card-body">
+                          <p class="card-text">${photo.title}</p>
+                      </div>
+                 </div>`;
 
+            photoList.append(photoItem);
+        });
+    }
 }

@@ -7,5 +7,8 @@ export class Controller{
         View.displayAlbums(albums);
     }
 
-    static async showPhotos(albumId)
+    static async showPhotos(albumId){
+        const photos = await Model.getPhotos(albumId);
+        View.displayPhotos(photos);
+    }
 }
