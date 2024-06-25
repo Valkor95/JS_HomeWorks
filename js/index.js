@@ -4,7 +4,7 @@ const initialization = function (){
     const path = window.location.pathname;
     if (path.endsWith('index.html') || path === '/'){
         Controller.showAlbums();
-    } else if (path.endsWith('album.html')){
+    } else if (path.endsWith('albumsPhoto.html')){
         const urlParams = new URLSearchParams(window.location.search);
         const albumId = urlParams.get('albumId');
         if (albumId){
