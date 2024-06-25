@@ -5,7 +5,7 @@ export class View{
             const albumItem = document.createElement('a');
             albumItem.href = `albumsPhoto.html?albumId=${album.id}`;
             albumItem.className = 'list-group-item list-group-item-action';
-            albumItem.textContent = album.title;
+            albumItem.textContent = `${album.title} || #${album.id}`;
             albumList.append(albumItem);
         });
     }
@@ -19,7 +19,7 @@ export class View{
                  <div class="card">
                       <img src="${photo.thumbnailUrl}" class="card-img-top" alt="${photo.title}">
                       <div class="card-body">
-                          <p class="card-text">${photo.title}</p>
+                          <p class="card-text">${photo.title} || #${photo.id}</p>
                       </div>
                  </div>`;
 
