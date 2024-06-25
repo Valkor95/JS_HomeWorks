@@ -1,7 +1,5 @@
 import {Controller} from "./Controller.js";
 
-document.addEventListener('DOMContentLoaded', initialization)
-
 const initialization = function (){
     const path = window.location.pathname;
     if (path.endsWith('index.html') || path === '/'){
@@ -9,6 +7,14 @@ const initialization = function (){
     } else if (path.endsWith('album.html')){
         const urlParams = new URLSearchParams(window.location.search);
         const albumId = urlParams.get('albumId');
-        Controller.showPhotos(albumId);
+        if (albumId){
+            Controller.showPhotos(albumId);
+        } else {
+            throw new Error('Album ID is missing in the URL parameters')
+        }
+
     }
 }
+
+document.addEventListener('DOMContentLoaded', initialization)
+
